@@ -7,10 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class RectangleTest {
 
-    /*
-    // test
-    */
-
     @Test
     public void getSquareTest(){
         assertEquals(1, new Rectangle(1,1).getSquare(),0.05);
