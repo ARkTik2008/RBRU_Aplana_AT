@@ -15,7 +15,6 @@ public class ExceptionTest {
         division.calculateResult();
     }
 
-
     @Rule
     public ExpectedException exception = ExpectedException.none();
 

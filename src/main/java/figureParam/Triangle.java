@@ -34,6 +34,11 @@ public class Triangle extends Figure {
     }
 
     double calcPerimeter() {
+
+        if (sizeA < 0 || sizeB < 0 || sizeС < 0){
+            throw new sizeException("Сторона фигуры не может быть отрицательной!");
+        }
+
         return sizeA + sizeB + sizeС;
     }
 }
