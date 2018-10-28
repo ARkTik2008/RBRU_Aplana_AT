@@ -23,6 +23,10 @@ public class Triangle extends Figure {
         double halfPerimeter;
         double square;
 
+        if (sizeA < 0 || sizeB < 0 || sizeС < 0){
+            throw new sizeException("Сторона фигуры не может быть отрицательной!");
+        }
+
         halfPerimeter = (sizeA + sizeB + sizeС) / 2;
         square = Math.sqrt(halfPerimeter * (halfPerimeter - sizeA) * (halfPerimeter - sizeB) * (halfPerimeter - sizeС));
 

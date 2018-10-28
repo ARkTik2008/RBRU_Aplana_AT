@@ -5,19 +5,6 @@ public class Circle extends Figure {
     double PI = 3.14;
     double radius;
 
-    double calcSquare() {
-        return PI * radius * radius;
-    }
-
-    double calcPerimeter() {
-        return 2 * PI * radius;
-    }
-
-    public void setRadius(double radius) {
-
-        this.radius = radius;
-    }
-
     public Circle() {
         this.radius = 1;
     }
@@ -26,4 +13,26 @@ public class Circle extends Figure {
         this();
         this.radius = radius;
     }
+
+    double calcSquare() {
+
+        if (radius < 0) {
+            throw new sizeException("Радиус окружности не может быть отрицательным!");
+        }
+        return PI * radius * radius;
+    }
+
+    double calcPerimeter() {
+
+        if (radius < 0) {
+            throw new sizeException("Радиус окружности не может быть отрицательным!");
+        }
+        return 2 * PI * radius;
+    }
+
+    public void setRadius(double radius) {
+
+        this.radius = radius;
+    }
+
 }
