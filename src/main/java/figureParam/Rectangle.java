@@ -18,7 +18,7 @@ public class Rectangle extends Figure {
 
     double calcSquare() {
         if (sizeA < 0 || sizeB < 0) {
-            throw new SizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         return sizeA * sizeB;
@@ -26,7 +26,7 @@ public class Rectangle extends Figure {
 
     double calcPerimeter() {
         if (sizeA < 0 || sizeB < 0) {
-            throw new SizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         return 2 * (sizeA + sizeB);

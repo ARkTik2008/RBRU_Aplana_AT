@@ -17,7 +17,7 @@ public class Circle extends Figure {
     double calcSquare() {
 
         if (radius < 0) {
-            throw new SizeException("Радиус окружности не может быть отрицательным!");
+            throw new IllegalFigureParamException("Радиус окружности не может быть отрицательным!");
         }
         return PI * radius * radius;
     }
@@ -25,7 +25,7 @@ public class Circle extends Figure {
     double calcPerimeter() {
 
         if (radius < 0) {
-            throw new SizeException("Радиус окружности не может быть отрицательным!");
+            throw new IllegalFigureParamException("Радиус окружности не может быть отрицательным!");
         }
         return 2 * PI * radius;
     }

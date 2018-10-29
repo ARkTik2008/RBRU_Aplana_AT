@@ -24,7 +24,7 @@ public class Triangle extends Figure {
         double square;
 
         if (sizeA < 0 || sizeB < 0 || sizeС < 0){
-            throw new SizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         halfPerimeter = (sizeA + sizeB + sizeС) / 2;
@@ -36,7 +36,7 @@ public class Triangle extends Figure {
     double calcPerimeter() {
 
         if (sizeA < 0 || sizeB < 0 || sizeС < 0){
-            throw new SizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         return sizeA + sizeB + sizeС;
