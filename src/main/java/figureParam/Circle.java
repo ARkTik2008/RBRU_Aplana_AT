@@ -11,13 +11,16 @@ public class Circle extends Figure {
 
     public Circle(double radius) {
         this();
+        if (radius < 0){
+            throw new IllegalFigureParamException("Радиус окружности не может быть отрицательным!");
+        }
         this.radius = radius;
     }
 
     double calcSquare() {
 
         if (radius < 0) {
-            throw new sizeException("Радиус окружности не может быть отрицательным!");
+            throw new IllegalFigureParamException("Радиус окружности не может быть отрицательным!");
         }
         return PI * radius * radius;
     }
@@ -25,7 +28,7 @@ public class Circle extends Figure {
     double calcPerimeter() {
 
         if (radius < 0) {
-            throw new sizeException("Радиус окружности не может быть отрицательным!");
+            throw new IllegalFigureParamException("Радиус окружности не может быть отрицательным!");
         }
         return 2 * PI * radius;
     }

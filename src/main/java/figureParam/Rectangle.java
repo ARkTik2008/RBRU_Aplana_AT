@@ -12,13 +12,16 @@ public class Rectangle extends Figure {
 
     public Rectangle(double sizeA, double sizeB) {
         this();
+        if (sizeA < 0 || sizeB < 0) {
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
+        }
         this.sizeA = sizeA;
         this.sizeB = sizeB;
     }
 
     double calcSquare() {
         if (sizeA < 0 || sizeB < 0) {
-            throw new sizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         return sizeA * sizeB;
@@ -26,7 +29,7 @@ public class Rectangle extends Figure {
 
     double calcPerimeter() {
         if (sizeA < 0 || sizeB < 0) {
-            throw new sizeException("Сторона фигуры не может быть отрицательной!");
+            throw new IllegalFigureParamException("Сторона фигуры не может быть отрицательной!");
         }
 
         return 2 * (sizeA + sizeB);

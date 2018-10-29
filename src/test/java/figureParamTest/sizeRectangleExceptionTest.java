@@ -1,7 +1,7 @@
 package figureParamTest;
 
 import figureParam.Rectangle;
-import figureParam.sizeException;
+import figureParam.IllegalFigureParamException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -11,10 +11,24 @@ public class sizeRectangleExceptionTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
+
+
+
+    @Test
+    public void testRule(){
+        exception.expect(IllegalFigureParamException.class);
+        exception.expectMessage("Сторона фигуры не может быть отрицательной!");
+        new Rectangle(-1,0);
+    }
+
+
+
+
+
     @Test
     public void sizeAGetPerimeterRectangleException() {
         Rectangle rectangle = new Rectangle(-5, 5);
-        exception.expect(sizeException.class);
+        exception.expect(IllegalFigureParamException.class);
         exception.expectMessage("Сторона фигуры не может быть отрицательной!");
         rectangle.getPerimeter();
     }
@@ -22,7 +36,7 @@ public class sizeRectangleExceptionTest {
     @Test
     public void sizeBGetPerimeterRectangleException() {
         Rectangle rectangle = new Rectangle(5, -5);
-        exception.expect(sizeException.class);
+        exception.expect(IllegalFigureParamException.class);
         exception.expectMessage("Сторона фигуры не может быть отрицательной!");
         rectangle.getPerimeter();
     }
@@ -30,7 +44,7 @@ public class sizeRectangleExceptionTest {
     @Test
     public void sizeAGetSquareRectangleException() {
         Rectangle rectangle = new Rectangle(-5, 5);
-        exception.expect(sizeException.class);
+        exception.expect(IllegalFigureParamException.class);
         exception.expectMessage("Сторона фигуры не может быть отрицательной!");
         rectangle.getSquare();
     }
@@ -38,7 +52,7 @@ public class sizeRectangleExceptionTest {
     @Test
     public void sizeBGetSquareRectangleException() {
         Rectangle rectangle = new Rectangle(5, -5);
-        exception.expect(sizeException.class);
+        exception.expect(IllegalFigureParamException.class);
         exception.expectMessage("Сторона фигуры не может быть отрицательной!");
         rectangle.getSquare();
     }
