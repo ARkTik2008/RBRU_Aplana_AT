@@ -1,10 +1,6 @@
 package seleniumTest;
 
-import org.junit.After;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -25,7 +21,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeAll
+    @BeforeEach
     public void afterScenario() {
         System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");
 
@@ -41,7 +37,7 @@ public class BaseTest {
         //driver.manage().window().maximize();
     }
 
-    @AfterAll
+    @AfterEach
     public void afterMethod() {
         driver.quit();
     }
@@ -63,7 +59,9 @@ public class BaseTest {
     }
 
     //public void selectInput(WebElement element){ }
-    //public void fillField(WebElement element){ }
+    public void acceptRegion(){
+        click(getDriver().findElement(By.xpath("//*[text() = 'Да']")));
+    }
 
 
 }
