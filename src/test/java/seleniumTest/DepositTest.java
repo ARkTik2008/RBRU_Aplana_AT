@@ -1,6 +1,7 @@
 package seleniumTest;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
@@ -22,8 +23,10 @@ public class DepositTest extends BaseTest {
         WebDriver driver = getDriver();
         driver.get("https://www.raiffeisen.ru/");
         acceptRegion();
-
-
+        click(getDriver().findElement(By.xpath("//a[contains(@class,'main-menu')][text() = 'Вклады']")));
+        click(getDriver().findElement(By.xpath("//a[contains(@class,'menu-section')][text() = 'Накопительные счета']")));
+        click(getDriver().findElement(By.xpath("//div[@class = 'b-card'][contains(.,'На каждый день')]/a[contains(@class,'link')]")));
+        click(getDriver().findElement(By.xpath("//div[@class = 'b-intro']//a[@class = 'button'][text() = 'Оставить заявку']")));
 
     }
 

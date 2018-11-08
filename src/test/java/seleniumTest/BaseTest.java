@@ -46,6 +46,10 @@ public class BaseTest {
         wait.until(ExpectedConditions.visibilityOf(element)).click();
     }
 
+    public String getText(WebElement element){
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+
     public void fillField(WebElement element, String value){
         element.clear();
         element.sendKeys(value);
