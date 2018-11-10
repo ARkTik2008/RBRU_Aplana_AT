@@ -30,10 +30,10 @@ public class BaseTest {
         options.setExperimentalOption("useAutomationExtension", false);
 
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver,60);
+        wait = new WebDriverWait(driver,5);
 
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //driver.manage().window().maximize();
     }
 
@@ -48,6 +48,9 @@ public class BaseTest {
 
     public String getText(WebElement element){
         return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+    }
+    public String getAttribute(WebElement element, String attr){
+        return element.getAttribute(attr);
     }
 
     public void fillField(WebElement element, String value){
