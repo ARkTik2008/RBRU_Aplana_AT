@@ -16,13 +16,11 @@ public class TemplateTest extends BaseTest {
 
         click(getDriver().findElement(By.xpath("//icon-close")));
         click(getDriver().findElement(By.xpath("//*[text() = 'Шаблоны и автоплатежи']")));
-        //click(getDriver().findElement(By.xpath("//*[text() = 'Оплатить']")));
         click(getDriver().findElement(By.xpath("//*[text() = 'Оплатить']")));
         click(getDriver().findElement(By.xpath("//div[contains(@class, 'page-navigation-item')][text() = 'Мобильная связь']")));
         fillField(driver.findElement(By.xpath("//c-input-phone/input[contains(@class,'c-input-phone__input')]")),
                   "79101231233");
         elementClick(driver.findElement(By.xpath("//payment-form-card/div[contains(.,'Оплатить с карты')]/following-sibling::div//c-select")), "Дебетовка в рублях");
-        //c-input-currency//input
         fillField(driver.findElement(By.xpath("//c-input-currency//input")), "300");
 
         click(driver.findElement(By.xpath("//label[@class = 'c-checkbox__label']")));
@@ -31,7 +29,6 @@ public class TemplateTest extends BaseTest {
         click(driver.findElement(By.xpath("//button[contains(@class,'rc-form__submit')][contains(.,'Сохранить шаблон')][2]")));
 
         Assert.assertEquals("Шаблон успешно сохранен", getText(driver.findElement(By.xpath("//notify//div[@class = 'notify__header']"))));
-
 
     }
 

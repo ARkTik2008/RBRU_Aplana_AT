@@ -1,6 +1,6 @@
 package seleniumTest;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,8 +19,8 @@ public class InsuranceTest extends BaseTest {
         click(getDriver().findElement(By.xpath("//div[@class = 'menu-block'][contains(.,'В путешествие')]/a")));
         click(getDriver().findElement(By.xpath("//div[@class = 'b-intro']//a[@class = 'button'][text() = 'Оставить заявку']")));
 
-        Assert.assertEquals("Форма заявки на страховую программу", getText(driver.findElement(By.xpath("//h1[contains(@class,'e-title')]"))));
-        Assert.assertEquals("Вояж (Комфорт/Бизнес класс/Первый класс)", getText(driver.findElement(By.xpath("//span[@class = 'ui-selectmenu-text']"))));
+        Assertions.assertEquals("Форма заявки на страховую программу", getText(driver.findElement(By.xpath("//h1[contains(@class,'e-title')]"))));
+        Assertions.assertEquals("Вояж (Комфорт/Бизнес класс/Первый класс)", getText(driver.findElement(By.xpath("//span[@class = 'ui-selectmenu-text']"))));
 
         fillField(driver.findElement(By.xpath("//input[@placeholder = 'Фамилия']")),
                 "Иванов");
@@ -38,8 +38,6 @@ public class InsuranceTest extends BaseTest {
                 "1234");
         click(driver.findElement(By.xpath("//div[@class = 'checkbox-block']//span[@class = 'checkbox-block__span']")));
 
-        Assert.assertEquals("button", getAttribute(driver.findElement(By.xpath("//button[@type = 'submit']")), "className"));
-
+        Assertions.assertEquals("button", getAttribute(driver.findElement(By.xpath("//button[@type = 'submit']")), "className"));
     }
-
 }
