@@ -1,5 +1,6 @@
 package seleniumTest;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 public class InsuranceTest extends BaseTest {
 
-    @Test
+    @Test @Ignore @Ignore
     public void InsuranceTest() throws InterruptedException {
 
 

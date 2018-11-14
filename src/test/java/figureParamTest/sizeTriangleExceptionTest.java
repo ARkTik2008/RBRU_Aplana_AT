@@ -2,8 +2,9 @@ package figureParamTest;
 
 import figureParam.Triangle;
 import figureParam.IllegalFigureParamException;
+import org.junit.Ignore;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.Test;import org.junit.Ignore;
 import org.junit.rules.ExpectedException;
 
 public class sizeTriangleExceptionTest {
@@ -11,7 +12,7 @@ public class sizeTriangleExceptionTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    @Test
+    @Test @Ignore
     public void sizeAGetPerimeterTriangleException() {
         Triangle triangle = new Triangle(-5, 3, 3);
         exception.expect(IllegalFigureParamException.class);
@@ -19,7 +20,7 @@ public class sizeTriangleExceptionTest {
         triangle.getPerimeter();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeBGetPerimeterTriangleException() {
         Triangle triangle = new Triangle(5, -3, 3);
         exception.expect(IllegalFigureParamException.class);
@@ -27,7 +28,7 @@ public class sizeTriangleExceptionTest {
         triangle.getPerimeter();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeCGetPerimeterTriangleException() {
         Triangle triangle = new Triangle(5, 3, -3);
         exception.expect(IllegalFigureParamException.class);
@@ -35,7 +36,7 @@ public class sizeTriangleExceptionTest {
         triangle.getPerimeter();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeAGetSquareTriangleException() {
         Triangle triangle = new Triangle(-5, 3, 3);
         exception.expect(IllegalFigureParamException.class);
@@ -43,7 +44,7 @@ public class sizeTriangleExceptionTest {
         triangle.getSquare();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeBGetSquareTriangleException() {
         Triangle triangle = new Triangle(5, -3, 3);
         exception.expect(IllegalFigureParamException.class);
@@ -51,7 +52,7 @@ public class sizeTriangleExceptionTest {
         triangle.getSquare();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeCGetSquareTriangleException() {
         Triangle triangle = new Triangle(5, 3, -3);
         exception.expect(IllegalFigureParamException.class);

@@ -1,40 +1,63 @@
+/**
+ * Created by Maria on 12.11.2018.
+ */
 package patternLesson.pages;
 
+
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import patternLesson.steps.BaseSteps;
 import patternLesson.util.DriverManager;
 
 import java.util.List;
 
+
+/**
+ * Created by Maria on 06.05.2017.
+ */
 public class BasePageObject {
+    WebDriverWait wait  = new WebDriverWait(DriverManager.getDriver(), 60);
 
-
-    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), 60);
-
-    public BasePageObject()
-    {
+    public BasePageObject() {
         PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
-    public void click(WebElement element){
-        wait.until(ExpectedConditions.visibilityOf(element));
+    public void fillField(WebElement field, String value){
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
+        js.executeScript("return arguments[0].style.border='1px solid magenta';", field);
+        field.clear();
+        field.sendKeys(value);
+        js.executeScript("return arguments[0].style.border='1px solid black';", field);
     }
 
-    public void selectMebuItem(List<WebElement> items, String itemName){
+    public void click(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element)).click();
+    }
 
-        for (WebElement item : items){
+    public void selectMenuItem(List<WebElement> menuItems, String itemName){
+        for (WebElement item : menuItems ){
             if (item.getText().equalsIgnoreCase(itemName)){
                 item.click();
                 return;
             }
-            Assert.fail("Не найден пункт меню " + itemName);
         }
-
+        Assert.fail("Не найден элмент коллеции - " + itemName);
     }
 
+    public void selectInput(WebElement element, String value) {
+        element.click();
+        element.findElement(By.xpath(".//div[contains(@class,'choices__item')][contains(text(),'" + value + "')]")).click();
+    }
+
+    public void scrollAndClick(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
+        js.executeScript("return arguments[0].scrollIntoView(false);", element);
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
 
 }

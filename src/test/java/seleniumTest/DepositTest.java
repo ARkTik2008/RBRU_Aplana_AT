@@ -1,6 +1,7 @@
 package seleniumTest;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +10,8 @@ import org.openqa.selenium.WebElement;
 import java.util.HashMap;
 
 public class DepositTest extends BaseTest {
-
-    @Test
+    @Ignore
+    @Test @Ignore
         public void testDeposit() {
             HashMap<String, String> testData = new HashMap<>();
             testData.put("Фамилия", "Иванов");

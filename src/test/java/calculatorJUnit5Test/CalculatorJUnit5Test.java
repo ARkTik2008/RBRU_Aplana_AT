@@ -1,6 +1,7 @@
 package calculatorJUnit5Test;
 
 import calculatorJUnit5.Addition;
+import org.junit.Ignore;
 import org.junit.jupiter.api.*;
 
 public class CalculatorJUnit5Test {
@@ -15,7 +16,7 @@ public class CalculatorJUnit5Test {
         System.out.println("Before all tests");
     }
 
-    @Test
+    @Test @Ignore
     @DisplayName("Проверка операции сложения")
     void testMethod() {
         Addition addition = new Addition(3, 4);

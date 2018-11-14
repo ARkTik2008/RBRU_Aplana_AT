@@ -3,7 +3,7 @@ package figureParamTest;
 import figureParam.Rectangle;
 import figureParam.IllegalFigureParamException;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.Test;import org.junit.Ignore;
 import org.junit.rules.ExpectedException;
 
 public class sizeRectangleExceptionTest {
@@ -14,7 +14,7 @@ public class sizeRectangleExceptionTest {
 
 
 
-    @Test
+    @Test @Ignore
     public void testRule(){
         exception.expect(IllegalFigureParamException.class);
         exception.expectMessage("Сторона фигуры не может быть отрицательной!");
@@ -25,7 +25,7 @@ public class sizeRectangleExceptionTest {
 
 
 
-    @Test
+    @Test @Ignore
     public void sizeAGetPerimeterRectangleException() {
         Rectangle rectangle = new Rectangle(-5, 5);
         exception.expect(IllegalFigureParamException.class);
@@ -33,7 +33,7 @@ public class sizeRectangleExceptionTest {
         rectangle.getPerimeter();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeBGetPerimeterRectangleException() {
         Rectangle rectangle = new Rectangle(5, -5);
         exception.expect(IllegalFigureParamException.class);
@@ -41,7 +41,7 @@ public class sizeRectangleExceptionTest {
         rectangle.getPerimeter();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeAGetSquareRectangleException() {
         Rectangle rectangle = new Rectangle(-5, 5);
         exception.expect(IllegalFigureParamException.class);
@@ -49,7 +49,7 @@ public class sizeRectangleExceptionTest {
         rectangle.getSquare();
     }
 
-    @Test
+    @Test @Ignore
     public void sizeBGetSquareRectangleException() {
         Rectangle rectangle = new Rectangle(5, -5);
         exception.expect(IllegalFigureParamException.class);

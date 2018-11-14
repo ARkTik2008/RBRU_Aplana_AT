@@ -2,7 +2,7 @@ package calculatorTest;
 
 import calculator.Addition;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.Test;import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized;
@@ -31,7 +31,7 @@ public class ParametersTest {
     @Parameterized.Parameter(2)
     public float result;
 
-    @Test
+    @Test @Ignore
     public void testMethod(){
         Assert.assertEquals(result, new Addition(number1, number2).calculateResult(), 0.0);
     }

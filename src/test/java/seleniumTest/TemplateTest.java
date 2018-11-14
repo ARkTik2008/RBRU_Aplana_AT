@@ -1,6 +1,7 @@
 package seleniumTest;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class TemplateTest extends BaseTest {
 
-    @Test
+    @Test @Ignore @Ignore
     public void testMethod(){
 
         WebDriver driver = getDriver();
