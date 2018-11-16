@@ -28,7 +28,8 @@ public class DepositSteps extends  BaseSteps{
     public void checkFieldIsEnabled(String name) throws Exception{
 
     WebElement element = depositPage.getField(name);
-    Assert.assertTrue(String.format("Поле(%s) недоступно", name), element.isEnabled());
+    Boolean t = element.isEnabled();
+    Assert.assertTrue(String.format("Поле (%s) недоступно", name), element.isEnabled());
     }
 
 

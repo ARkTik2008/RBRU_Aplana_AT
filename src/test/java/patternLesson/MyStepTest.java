@@ -1,10 +1,10 @@
 package patternLesson;
 
+import org.junit.Test;
 import patternLesson.steps.BaseSteps;
 import patternLesson.steps.DepositListSteps;
 import patternLesson.steps.DepositSteps;
 import patternLesson.steps.MainSteps;
-import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
@@ -31,7 +31,7 @@ public class MyStepTest extends BaseSteps {
 
         mainSteps.acceptRegion();
         mainSteps.selectMenuItem("Вклады");
-        mainSteps.selectSubMenuItem("Накопительнве счета");
+        mainSteps.selectSubMenuItem("Накопительные счета");
 
         depositListSteps.openDeposit("На каждый день");
 
