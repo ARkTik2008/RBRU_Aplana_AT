@@ -3,7 +3,6 @@ package util;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Properties;
@@ -39,7 +38,6 @@ public class DriverManager {
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-
 
         return driver;
     }

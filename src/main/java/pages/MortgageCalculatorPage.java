@@ -15,6 +15,10 @@ import java.util.List;
 
 public class MortgageCalculatorPage extends BasePageObject {
 
+    @FindBy(xpath = "//h1")
+    @FieldName(name = "Ипотечный калькулятор")
+    public WebElement mortCalculator;
+
     @FindBy(xpath = "//*[@id = 'form_city-button']/..")
     @FieldName(name = "Город")
     public WebElement city;
@@ -72,28 +76,22 @@ public class MortgageCalculatorPage extends BasePageObject {
         fillField(element, value);
     }
 
-/*
-public void click(String name) throws Exception {
-        WebElement element = getField(name);
-        click(element);
-    }*/
-
-    public void click(String name) throws Exception {
+     public void click(String name) throws Exception {
         WebElement element = getField(name);
         wait.until(ExpectedConditions.visibilityOf(element));
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    public void selectList(String value) {
+    public void selectInList(String value) {
         click(wait.until(ExpectedConditions.elementToBeClickable(DriverManager.getDriver().findElement(By.xpath("//ul/li/div[text()='" + value + "']")))));
     }
 
     public void selectInput(String field, String value) throws Exception{
+        //TODO
         Thread.sleep(2000);
-        click(field);
-        selectList(value);
-        //this.click(DriverManager.getDriver().findElement(By.xpath("//ul/li/div[text()='" + value + "']")));
+        click(getField(field));
+        selectInList(value);
     }
 
     public WebElement getField(String name) throws Exception {
@@ -108,5 +106,4 @@ public void click(String name) throws Exception {
         Assert.fail("Не объявлен элемент с наименованием " + name);
         return null;
     }
-
 }

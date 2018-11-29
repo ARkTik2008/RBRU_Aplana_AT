@@ -36,6 +36,12 @@ public class MortgageCalculatorSteps {
         Thread.sleep(4000);
     }
 
+    @When("на странице присутствует заголовок \"(.*)\"")
+    public void headerIsPresent(String name) throws Exception {
+        Assert.assertTrue("Кнопка - "+ name +" не активна", mortgageCalculatorPage.getField(name).isDisplayed());
+    }
+
+
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")
     public void selectInput(String field, String value) throws Exception {
         mortgageCalculatorPage.selectInput(field, value);
