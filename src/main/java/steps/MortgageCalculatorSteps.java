@@ -22,7 +22,7 @@ public class MortgageCalculatorSteps {
 
     @When("значение поля \"(.*)\" равно \"(.*)\"")
     public void checkField(String name, String value) throws Exception {
-        Assert.assertEquals(value, mortgageCalculatorPage.getField(name).getAttribute("value"));
+        Assert.assertEquals(value, mortgageCalculatorPage.getField(name).getAttribute("outerText"));
     }
 
     @When("поле \"(.*)\" доступно")
@@ -33,12 +33,12 @@ public class MortgageCalculatorSteps {
     @When("выполнено нажатие на \"(.*)\"")
     public void click(String name) throws Exception {
         mortgageCalculatorPage.click(name);
+        Thread.sleep(4000);
     }
 
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")
     public void selectInput(String field, String value) throws Exception {
-        mortgageCalculatorPage.getField(field).click();
-        mortgageCalculatorPage.selectList(value);
+        mortgageCalculatorPage.selectInput(field, value);
     }
 
     @When("поле \"(.*)\" присутствует")

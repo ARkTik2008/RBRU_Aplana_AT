@@ -12,28 +12,32 @@ import util.DriverManager;
 import java.util.List;
 
 public class BasePageObject {
-    WebDriverWait wait  = new WebDriverWait(DriverManager.getDriver(), 60);
+
+    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), 60);
 
     public BasePageObject() {
         PageFactory.initElements(DriverManager.getDriver(), this);
     }
 
-    public void fillField(WebElement field, String value){
+    public void fillField(WebElement field, String value) {
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
-        js.executeScript("return arguments[0].style.border='1px solid magenta';", field);
-        field.clear();
-        field.sendKeys(value);
-        js.executeScript("return arguments[0].style.border='1px solid black';", field);
+        js.executeScript("arguments[0].value='"+ value+ "'", field);
+        //field.click();
+        //field.clear();
+
+        //        //field.sendKeys(value);
+        //js.executeScript("return arguments[0].style.border='1px solid black';", field);
     }
 
 
-    public void click(WebElement element){
-        wait.until(ExpectedConditions.visibilityOf(element)).click();
+    public void click(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    public void selectMenuItem(List<WebElement> menuItems, String itemName){
-        for (WebElement item : menuItems ){
-            if (item.getText().equalsIgnoreCase(itemName)){
+    public void selectMenuItem(List<WebElement> menuItems, String itemName) {
+        for (WebElement item : menuItems) {
+            if (item.getText().equalsIgnoreCase(itemName)) {
                 item.click();
                 return;
             }
@@ -42,8 +46,10 @@ public class BasePageObject {
     }
 
     public void selectInput(WebElement element, String value) {
+
         element.click();
-        element.findElement(By.xpath(".//div[contains(@class,'choices__item')][contains(text(),'" + value + "')]")).click();
+        element.findElement(By.xpath(".//div[contains(@class,'choices__item')][contains(text(),'" + value + "')]"))
+               .click();
     }
 
     public void scrollAndClick(WebElement element) {
@@ -51,6 +57,5 @@ public class BasePageObject {
         js.executeScript("return arguments[0].scrollIntoView(false);", element);
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
-
 }
 

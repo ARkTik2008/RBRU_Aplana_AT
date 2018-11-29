@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.DriverManager;
 
 import java.lang.reflect.Field;
@@ -12,22 +13,21 @@ import java.util.Arrays;
 import java.util.List;
 
 
+public class MortgageCalculatorPage extends BasePageObject {
 
-public class MortgageCalculatorPage extends BasePageObject{
-
-    @FindBy(xpath = "//*[@id = 'form_city-button']")
+    @FindBy(xpath = "//*[@id = 'form_city-button']/..")
     @FieldName(name = "Город")
     public WebElement city;
 
-    @FindBy(xpath = "//*[@id = 'form_program-button']")
+    @FindBy(xpath = "//*[@id = 'form_program-button']/..")
     @FieldName(name = "Вид ипотечной программы")
     public WebElement mortProgram;
 
-    @FindBy(xpath = "//*[@id = 'form_category-button']")
+    @FindBy(xpath = "//*[@id = 'form_category-button']/..")
     @FieldName(name = "Я являюсь")
     public WebElement clientCategory;
 
-    @FindBy(xpath = "//*[@id = 'form_documents-button']")
+    @FindBy(xpath = "//*[@id = 'form_documents-button']/..")
     @FieldName(name = "Уровень доходов подтверждаю")
     public WebElement documents;
 
@@ -35,78 +35,78 @@ public class MortgageCalculatorPage extends BasePageObject{
     @FieldName(name = "Знаю свою ипотечную программу")
     public WebElement isProgram;
 
-    ////////////////////
+    @FindBy(xpath = "//*[@id = 'form_credit_amount']")
+    @FieldName(name = "В банке возьму")
+    public WebElement creditAmount;
 
+    @FindBy(xpath = "//*[@id = 'form_initial']")
+    @FieldName(name = "Первоначальный взнос")
+    public WebElement initialAmount;
 
+    @FindBy(xpath = "//*[@id = 'form_period']")
+    @FieldName(name = "Срок кредита")
+    public WebElement period;
 
+    @FindBy(xpath = "//*[@value = 'Рассчитать']")
+    @FieldName(name = "Рассчитать")
+    public WebElement calculate;
 
-    @FindBy(xpath = "//*[text()='Имя']/parent::div/input")
-    @FieldName(name = "Имя")
-    public WebElement name;
+    @FindBy(xpath = "//*[@class = 'monthly-payment']")
+    @FieldName(name = "Ежемесячный платеж")
+    public WebElement monthlyPayment;
 
-    @FindBy(xpath = "//*[text()='Отчество']/parent::div/input")
-    @FieldName(name = "Отчество")
-    public WebElement middleName;
+    @FindBy(xpath = "//*[contains (@class, 'total-payment')]")
+    @FieldName(name = "Общая сумма выплат")
+    public WebElement totalPayment;
 
-    @FindBy(xpath = "//*[text()='Дата рождения']/parent::div/input")
-    @FieldName(name = "Дата рождения")
-    public WebElement birthDate;
+    @FindBy(xpath = "//*[contains (@class, 'percent-sum')]")
+    @FieldName(name = "Cумма выплат по процентам")
+    public WebElement percentSum;
 
-    @FindBy(xpath = "//*[text()='Телефон']/parent::div/input")
-    @FieldName(name = "Телефон")
-    public WebElement phone;
-
-    @FindBy(xpath = "//*[text()='Отделение банка']/parent::div/div")
-    @FieldName(name = "Отделение банка")
-    public WebElement bank;
-
-    @FindBy(xpath = "//*[text()='Выслать код']")
-    @FieldName(name = "Выслать код")
-    public WebElement sentCode;
-
-    @FindBy(xpath = "//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']")
-    @FieldName(name = "Осталось заполнить Телефон")
-    public WebElement notFilledField;
-
-
-
-    @FindBy(xpath = "//*[contains(text(),'подтверждаю')]/..")
-    @FieldName(name = "Я подтверждаю")
-    public WebElement acceptCheckBox;
-
-
+    @FindBy(xpath = "//*[contains (@class, 'interest-rate')]")
+    @FieldName(name = "Процентная ставка")
+    public WebElement interestRate;
 
     public void fillField(String name, String value) throws Exception {
         WebElement element = getField(name);
         fillField(element, value);
     }
 
-    public void click(String name) throws Exception {
+/*
+public void click(String name) throws Exception {
         WebElement element = getField(name);
         click(element);
+    }*/
+
+    public void click(String name) throws Exception {
+        WebElement element = getField(name);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
 
-    public void selectList(String value){
-        DriverManager.getDriver().findElement(By.xpath("//ul/li/div[text()='" + value + "']")).click();
+    public void selectList(String value) {
+        click(wait.until(ExpectedConditions.elementToBeClickable(DriverManager.getDriver().findElement(By.xpath("//ul/li/div[text()='" + value + "']")))));
     }
 
+    public void selectInput(String field, String value) throws Exception{
+        Thread.sleep(2000);
+        click(field);
+        selectList(value);
+        //this.click(DriverManager.getDriver().findElement(By.xpath("//ul/li/div[text()='" + value + "']")));
+    }
 
     public WebElement getField(String name) throws Exception {
         Class example = Class.forName("pages.MortgageCalculatorPage");
         List<Field> fields = Arrays.asList(example.getFields());
-        for (Field field : fields){
-            if (field.getAnnotation(FieldName.class).name().equals(name)){
-                return DriverManager.getDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath()));
+        for (Field field : fields) {
+            if (field.getAnnotation(FieldName.class).name().equals(name)) {
+                return wait.until(ExpectedConditions.visibilityOf(
+                        DriverManager.getDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath()))));
             }
         }
         Assert.fail("Не объявлен элемент с наименованием " + name);
         return null;
     }
-
-
-
-
-
-
 
 }
